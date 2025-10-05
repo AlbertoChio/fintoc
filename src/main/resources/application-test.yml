@@ -1,0 +1,28 @@
+spring:
+  # H2 in-memory database for testing
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+    
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    
+  h2:
+    console:
+      enabled: true
+
+# Test Fintoc API configuration
+fintoc:
+  api:
+    key: test_api_key
+    secret: test_api_secret
+
+# Logging for tests
+logging:
+  level:
+    com.fintoc.logger: DEBUG
+    org.springframework.web: WARN

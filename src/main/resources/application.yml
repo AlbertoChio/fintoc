@@ -1,0 +1,108 @@
+spring:
+  application:
+    name: fintoc-api-logger
+
+  # Database configuration (H2 for testing, PostgreSQL for production)
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:testdb}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+    
+  # JPA configuration
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:create-drop}
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: ${JPA_DIALECT:org.hibernate.dialect.H2Dialect}
+        format_sql: true
+    open-in-view: false
+
+  # H2 Console (for testing)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # Jackson configuration
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+# Fintoc API configuration
+fintoc:
+  api:
+    key: sk_test_KDozNN4qK4xYJrc3pSXFkNu8TgzMvyjyrbZTaxxd_nM
+    secret: ${FINTOC_API_SECRET:test_secret_for_development}
+
+# JWS Signature configuration
+jws:
+  signature:
+    private-key: |
+      -----BEGIN PRIVATE KEY-----
+      MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDQly7Z6EleprXw
+      X5OYDy3a8R7BL8HbMDJcyGPsTBqkYc7GH/08SCMvEAefBAX+Elh+6fZHF3kPzHR9
+      nwDxFT44pVZfnsEHAkvStdEmorQYXBSZdrgtW6Ld92rGyQ4wVtDD0pPN+/onpcNb
+      61A8enAyKvrJlOd0H7HMZkeiKGbJj4HVfUNGkz+Dvz1QPofFCYL4/NlmbJXoN1g4
+      PtlRhJpN3GW2RDgM+xPZj/qiWwWEHtTpZTEHtepZH45wkpHV+i7WhuMh19Ena754
+      CVx55Cwc7W9A4ONgla4w8RyGa4MbqfLaIZFOHQIll95RLIUM+Se30QkYWEk01Me3
+      le5IZZazAgMBAAECggEAA/pvUhp5+OWFyczp/4EUUpiY0uuznOEUzNCkvYUPfU5l
+      q/gbymTAZC13BFErHPJ4xOW/28f2nJ/h/b6APU+2n3Dz0vvCNbQ53US4mhuuJ39a
+      qPAPf+etJ5lRfqoU2kRzU5DIqCm2DXbQPK00Ug1AnUMwcbekYibzvYMIcbg5r1n6
+      aqkLoPBxMxbyX5RtSBM5g04vJZ6O3kZ820o9IhZqqjlNvyxUDHSaJkywlQztOzYZ
+      tHsjsRECJZVHjleb6go9bHdxehhkinR29EHVoRlCWUOarccpb8jzozyvInyF15wb
+      WRKsgJOxTHpuFZH2dUeX/NQHPk4pKzFdYwIHFNEl/QKBgQD47DE7VYZ/ooKjxXc7
+      bFKMd4tyhrWzFxlbDMWV3Ix2CPNsy0q/IzYFKlItTwt8v5ybfWD3jTFSKpiw9UPt
+      6YBsZiy7zxkoi171y/41iL+0kr/IcVqOVua/uTkr3uOQ6rgPre0dqYb86S2l1SJW
+      UKCtMPpw1cbbUOJiIfO2gb3JlwKBgQDWhW4HcoUqPmVk5moFME6X5B8xwDgcLwJI
+      eBF/i9MqU4RBQBouoBvrfd7s4DCnAfFaDt+o1uBV74h15Sk5a54TwC7NuY7DaZ8J
+      vfqG8G8O9sg1Vv8VTvJ6CZS5XT1qQb/3RBNb9w5UMybLqAVR3quT0oNPPB8bEvV7
+      YQ74IEHnRQKBgDZRbCjTb+cYMkPEilEoQRcv2vkh1jJ/XuQUdGVQXEJBj8T005nD
+      +DzGUGpcrlgJhAYWJPvADrwsWWd8DdeztXdyEF7nQUksqIsgeZd7AMJJp5n4ylb3
+      NaEurQAawjPUVFfvjyeC39b+lxxx1u1Y6McCQhQvQhaHnu7lE8aGp0B/AoGAJVDA
+      evsovthrusl51703bqR36KePGxfyRbjdElq4OLyeXNtRspqXQLd8d6fnzqU/3nKH
+      5U67ZzdrfVaHfT2DGdxsR8znUIam64LoeWCJcQjseprPdF1vQFs6S6Q0cq9NPS3S
+      UEUBcRQUw4hOpJcfMW+E99t1bbg2i2euuuqhjCECgYAIcR1KMpbLSemlJC86Yw/F
+      hHdLtrRVYiTe/YUmFlHgwr05hDTh7sLQbWRJ4WnVjEiDYBUQ+N4D5hG8MuqD0DUX
+      j9Uqfm6AXNkodENHxm8BPW6sdqx5xp3eu2AG14R+bfbDMMINhjQd1JqXSxIEqxKJ
+      3iKA7frKNuuO2+WmYeO/dQ==
+      -----END PRIVATE KEY-----
+    public-key: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0Jcu2ehJXqa18F+TmA8t
+      2vEewS/B2zAyXMhj7EwapGHOxh/9PEgjLxAHnwQF/hJYfun2Rxd5D8x0fZ8A8RU+
+      OKVWX57BBwJL0rXRJqK0GFwUmXa4LVui3fdqxskOMFbQw9KTzfv6J6XDW+tQPHpw
+      Mir6yZTndB+xzGZHoihmyY+B1X1DRpM/g789UD6HxQmC+PzZZmyV6DdYOD7ZUYSa
+      TdxltkQ4DPsT2Y/6olsFhB7U6WUxB7XqWR+OcJKR1fou1objIdfRJ2u+eAlceeQs
+      HO1vQODjYJWuMPEchmuDG6ny2iGRTh0CJZfeUSyFDPknt9EJGFhJNNTHt5XuSGWW
+      swIDAQAB
+      -----END PUBLIC KEY-----
+
+# Logging configuration
+logging:
+  level:
+    com.fintoc.logger: INFO
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/fintoc-api-logger.log
+
+# Server configuration
+server:
+  port: 8080
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

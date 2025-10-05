@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: fintoc-api-logger
+
+  # SQL Server Database configuration
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=FintocApiLogger;trustServerCertificate=true
+    username: ${DB_USERNAME:fintoc_user}
+    password: ${DB_PASSWORD:your_password}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    
+  # JPA configuration for SQL Server
+  jpa:
+    hibernate:
+      ddl-auto: validate  # Use 'validate' since we create schema manually
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+
+  # Jackson configuration
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+# Fintoc API configuration
+fintoc:
+  api:
+    key: ${FINTOC_API_KEY:your_fintoc_api_key}
+    secret: ${FINTOC_API_SECRET:your_fintoc_api_secret}
+
+# Logging configuration
+logging:
+  level:
+    com.fintoc.logger: INFO
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/fintoc-api-logger.log
+
+# Server configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

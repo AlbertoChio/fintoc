@@ -1,0 +1,550 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.fintoc:fintoc-api-logger >--------------------
+[INFO] Building Fintoc API Logger 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.7.18:run (default-cli) > test-compile @ fintoc-api-logger >>>
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ fintoc-api-logger ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 3 resources
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ fintoc-api-logger ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /Users/beto/desarrollo/me/fintoc/target/classes
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ fintoc-api-logger ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /Users/beto/desarrollo/me/fintoc/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ fintoc-api-logger ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/beto/desarrollo/me/fintoc/target/test-classes
+[INFO] 
+[INFO] <<< spring-boot:2.7.18:run (default-cli) < test-compile @ fintoc-api-logger <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:2.7.18:run (default-cli) @ fintoc-api-logger ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.18)
+
+2025-10-04 18:38:04 - Starting FintocApiLoggerApplication using Java 21.0.7 on 192.168.1.121 with PID 34960 (/Users/beto/desarrollo/me/fintoc/target/classes started by beto in /Users/beto/desarrollo/me/fintoc)
+2025-10-04 18:38:04 - No active profile set, falling back to 1 default profile: "default"
+2025-10-04 18:38:04 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-04 18:38:04 - Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
+2025-10-04 18:38:05 - Tomcat initialized with port(s): 8080 (http)
+2025-10-04 18:38:05 - Starting service [Tomcat]
+2025-10-04 18:38:05 - Starting Servlet engine: [Apache Tomcat/9.0.83]
+2025-10-04 18:38:05 - Initializing Spring embedded WebApplicationContext
+2025-10-04 18:38:05 - Root WebApplicationContext: initialization completed in 342 ms
+2025-10-04 18:38:05 - HikariPool-1 - Starting...
+2025-10-04 18:38:05 - HikariPool-1 - Start completed.
+2025-10-04 18:38:05 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-10-04 18:38:05 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-04 18:38:05 - HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-10-04 18:38:05 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-10-04 18:38:05 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-10-04 18:38:05 - 
+    
+    drop table if exists account_validation CASCADE 
+Hibernate: 
+    
+    drop table if exists account_validation CASCADE 
+2025-10-04 18:38:05 - 
+    
+    drop table if exists logsbook CASCADE 
+Hibernate: 
+    
+    drop table if exists logsbook CASCADE 
+2025-10-04 18:38:05 - 
+    
+    drop table if exists nonce_tracking CASCADE 
+Hibernate: 
+    
+    drop table if exists nonce_tracking CASCADE 
+2025-10-04 18:38:05 - 
+    
+    create table account_validation (
+       id varchar(255) not null,
+        counterparty_account_number varchar(255),
+        counterparty_account_type varchar(255),
+        counterparty_holder_id varchar(255),
+        counterparty_holder_name varchar(255),
+        institution_country varchar(255),
+        institution_id varchar(255),
+        institution_name varchar(255),
+        created_at timestamp,
+        mode varchar(255),
+        object_type varchar(255),
+        reason varchar(255),
+        receipt_url varchar(500),
+        status varchar(255),
+        transaction_date varchar(255),
+        transfer_id varchar(255),
+        updated_at timestamp,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table account_validation (
+       id varchar(255) not null,
+        counterparty_account_number varchar(255),
+        counterparty_account_type varchar(255),
+        counterparty_holder_id varchar(255),
+        counterparty_holder_name varchar(255),
+        institution_country varchar(255),
+        institution_id varchar(255),
+        institution_name varchar(255),
+        created_at timestamp,
+        mode varchar(255),
+        object_type varchar(255),
+        reason varchar(255),
+        receipt_url varchar(500),
+        status varchar(255),
+        transaction_date varchar(255),
+        transfer_id varchar(255),
+        updated_at timestamp,
+        primary key (id)
+    )
+2025-10-04 18:38:05 - 
+    
+    create table logsbook (
+       id bigint generated by default as identity,
+        account_id varchar(100) not null,
+        api_key_used varchar(50),
+        created_at timestamp not null,
+        error_message TEXT,
+        execution_time_ms bigint,
+        institution_id varchar(100),
+        link_id varchar(100),
+        request_body TEXT,
+        request_headers TEXT,
+        response_body TEXT,
+        response_headers TEXT,
+        response_status integer not null,
+        success boolean not null,
+        validation_details TEXT,
+        validation_result varchar(20),
+        validation_type varchar(50),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table logsbook (
+       id bigint generated by default as identity,
+        account_id varchar(100) not null,
+        api_key_used varchar(50),
+        created_at timestamp not null,
+        error_message TEXT,
+        execution_time_ms bigint,
+        institution_id varchar(100),
+        link_id varchar(100),
+        request_body TEXT,
+        request_headers TEXT,
+        response_body TEXT,
+        response_headers TEXT,
+        response_status integer not null,
+        success boolean not null,
+        validation_details TEXT,
+        validation_result varchar(20),
+        validation_type varchar(50),
+        primary key (id)
+    )
+2025-10-04 18:38:05 - 
+    
+    create table nonce_tracking (
+       nonce varchar(64) not null,
+        created_at timestamp not null,
+        expires_at timestamp not null,
+        primary key (nonce)
+    )
+Hibernate: 
+    
+    create table nonce_tracking (
+       nonce varchar(64) not null,
+        created_at timestamp not null,
+        expires_at timestamp not null,
+        primary key (nonce)
+    )
+2025-10-04 18:38:05 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-10-04 18:38:05 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-04 18:38:05 - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-04 18:38:05 - 21 mappings in 'requestMappingHandlerMapping'
+2025-10-04 18:38:05 - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-04 18:38:05 - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-04 18:38:05 - Tomcat started on port(s): 8080 (http) with context path ''
+2025-10-04 18:38:05 - Started FintocApiLoggerApplication in 1.159 seconds (JVM running for 1.261)
+2025-10-04 18:38:05 - 
+    delete 
+    from
+        nonce_tracking 
+    where
+        expires_at<?
+Hibernate: 
+    delete 
+    from
+        nonce_tracking 
+    where
+        expires_at<?
+2025-10-04 18:38:23 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-04 18:38:23 - Initializing Servlet 'dispatcherServlet'
+2025-10-04 18:38:23 - Detected StandardServletMultipartResolver
+2025-10-04 18:38:23 - Detected AcceptHeaderLocaleResolver
+2025-10-04 18:38:23 - Detected FixedThemeResolver
+2025-10-04 18:38:23 - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7aa1fb0e
+2025-10-04 18:38:23 - Detected org.springframework.web.servlet.support.SessionFlashMapManager@638d624a
+2025-10-04 18:38:23 - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-10-04 18:38:23 - Completed initialization in 1 ms
+2025-10-04 18:38:23 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:38:23 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:38:23 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:38:23 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:38:23 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:38:23 - Completed 200 OK
+2025-10-04 18:38:50 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:38:50 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:38:50 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:38:50 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:38:50 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:38:50 - Completed 200 OK
+2025-10-04 18:38:53 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:38:53 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:38:53 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:38:53 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:38:53 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:38:53 - Completed 200 OK
+2025-10-04 18:38:56 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:38:56 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:38:56 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:38:56 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:38:56 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:38:56 - Completed 200 OK
+2025-10-04 18:38:57 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:38:57 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:38:57 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:38:57 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:38:57 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:38:57 - Completed 200 OK
+2025-10-04 18:39:04 - POST "/api/jws/create-jws-header", parameters={}
+2025-10-04 18:39:04 - Mapped to com.fintoc.logger.controller.JwsController#createJwsHeader(Map)
+2025-10-04 18:39:04 - Read "application/json;charset=UTF-8" to [{body={"test": "data", "amount": 100}}]
+2025-10-04 18:39:04 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:39:04 - Writing [{jws_header=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiMDUzYWFmOGM1MWJhYjZkYTZkMmRkYzBmYzU2ZDkwMmIiLCJ0cyI6MTc1 (truncated)...]
+2025-10-04 18:39:04 - Completed 200 OK
+2025-10-04 18:39:05 - POST "/api/jws/create-jws-header", parameters={}
+2025-10-04 18:39:05 - Mapped to com.fintoc.logger.controller.JwsController#createJwsHeader(Map)
+2025-10-04 18:39:05 - Read "application/json;charset=UTF-8" to [{body={"test": "data", "amount": 100}}]
+2025-10-04 18:39:05 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:39:05 - Writing [{jws_header=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiOTJiNzgxNGJkYjdkZDI3ODliMjY5NWM2M2Q5MTQ1N2UiLCJ0cyI6MTc1 (truncated)...]
+2025-10-04 18:39:05 - Completed 200 OK
+2025-10-04 18:39:05 - POST "/api/jws/create-jws-header", parameters={}
+2025-10-04 18:39:05 - Mapped to com.fintoc.logger.controller.JwsController#createJwsHeader(Map)
+2025-10-04 18:39:05 - Read "application/json;charset=UTF-8" to [{body={"test": "data", "amount": 100}}]
+2025-10-04 18:39:06 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:39:06 - Writing [{jws_header=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiOTFlZGQ2MWE4NThkYmQzNjljNTQ4YjYxYmM3N2U1NDYiLCJ0cyI6MTc1 (truncated)...]
+2025-10-04 18:39:06 - Completed 200 OK
+2025-10-04 18:39:32 - POST "/api/jws/verify-jws", parameters={}
+2025-10-04 18:39:32 - Mapped to com.fintoc.logger.controller.JwsController#verifyJws(Map)
+2025-10-04 18:39:32 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:39:32 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:39:32 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:39:32 - Completed 200 OK
+2025-10-04 18:39:55 - POST "/api/jws/validate-jws-comprehensiv", parameters={}
+2025-10-04 18:39:55 - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-04 18:39:55 - Resource not found
+2025-10-04 18:39:55 - Completed 404 NOT_FOUND
+2025-10-04 18:39:55 - "ERROR" dispatch for POST "/error", parameters={}
+2025-10-04 18:39:55 - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2025-10-04 18:39:55 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:39:55 - Writing [{timestamp=Sat Oct 04 18:39:55 CST 2025, status=404, error=Not Found, path=/api/jws/validate-jws-com (truncated)...]
+2025-10-04 18:39:55 - Exiting from "ERROR" dispatch, status 404
+2025-10-04 18:40:00 - POST "/api/jws/validate-jws-comprehensive", parameters={}
+2025-10-04 18:40:00 - Mapped to com.fintoc.logger.controller.JwsController#validateJwsComprehensive(Map)
+2025-10-04 18:40:00 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:00 - 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+Hibernate: 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+2025-10-04 18:40:00 - 
+    select
+        noncetrack0_.nonce as nonce1_2_0_,
+        noncetrack0_.created_at as created_2_2_0_,
+        noncetrack0_.expires_at as expires_3_2_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=?
+Hibernate: 
+    select
+        noncetrack0_.nonce as nonce1_2_0_,
+        noncetrack0_.created_at as created_2_2_0_,
+        noncetrack0_.expires_at as expires_3_2_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=?
+2025-10-04 18:40:00 - 
+    insert 
+    into
+        nonce_tracking
+        (created_at, expires_at, nonce) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        nonce_tracking
+        (created_at, expires_at, nonce) 
+    values
+        (?, ?, ?)
+2025-10-04 18:40:00 - JWS comprehensive validation passed
+2025-10-04 18:40:00 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:40:00 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:00 - Completed 200 OK
+2025-10-04 18:40:14 - POST "/api/jws/validate-jws-comprehensive", parameters={}
+2025-10-04 18:40:14 - Mapped to com.fintoc.logger.controller.JwsController#validateJwsComprehensive(Map)
+2025-10-04 18:40:14 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:14 - 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+Hibernate: 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+2025-10-04 18:40:14 - Nonce already used: f7d7ef6e163de28767fe5aa67a2a1252
+2025-10-04 18:40:14 - JWS nonce validation failed - possibly replay attack
+2025-10-04 18:40:14 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:40:14 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiZjdkN2VmNmUxNjNkZTI4NzY3ZmU1YWE2N2EyYTEyNTIiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:14 - Completed 200 OK
+2025-10-04 18:40:29 - POST "/api/jws/verify-jws", parameters={}
+2025-10-04 18:40:29 - Mapped to com.fintoc.logger.controller.JwsController#verifyJws(Map)
+2025-10-04 18:40:29 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:29 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:40:29 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:29 - Completed 200 OK
+2025-10-04 18:40:40 - POST "/api/jws/validate-jws-comprehensive", parameters={}
+2025-10-04 18:40:40 - Mapped to com.fintoc.logger.controller.JwsController#validateJwsComprehensive(Map)
+2025-10-04 18:40:40 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:40 - 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+Hibernate: 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+2025-10-04 18:40:40 - 
+    select
+        noncetrack0_.nonce as nonce1_2_0_,
+        noncetrack0_.created_at as created_2_2_0_,
+        noncetrack0_.expires_at as expires_3_2_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=?
+Hibernate: 
+    select
+        noncetrack0_.nonce as nonce1_2_0_,
+        noncetrack0_.created_at as created_2_2_0_,
+        noncetrack0_.expires_at as expires_3_2_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=?
+2025-10-04 18:40:40 - 
+    insert 
+    into
+        nonce_tracking
+        (created_at, expires_at, nonce) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        nonce_tracking
+        (created_at, expires_at, nonce) 
+    values
+        (?, ?, ?)
+2025-10-04 18:40:40 - JWS comprehensive validation passed
+2025-10-04 18:40:40 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:40:40 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:40 - Completed 200 OK
+2025-10-04 18:40:50 - POST "/api/jws/validate-jws-comprehensive", parameters={}
+2025-10-04 18:40:50 - Mapped to com.fintoc.logger.controller.JwsController#validateJwsComprehensive(Map)
+2025-10-04 18:40:50 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:50 - 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+Hibernate: 
+    select
+        noncetrack0_.nonce as col_0_0_ 
+    from
+        nonce_tracking noncetrack0_ 
+    where
+        noncetrack0_.nonce=? limit ?
+2025-10-04 18:40:50 - Nonce already used: 4f2722e806e9e6e130f92e6dd9190044
+2025-10-04 18:40:50 - JWS nonce validation failed - possibly replay attack
+2025-10-04 18:40:50 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:40:50 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNGYyNzIyZTgwNmU5ZTZlMTMwZjkyZTZkZDkxOTAwNDQiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:40:50 - Completed 200 OK
+2025-10-04 18:41:00 - POST "/api/jws/create-jws-header", parameters={}
+2025-10-04 18:41:00 - Mapped to com.fintoc.logger.controller.JwsController#createJwsHeader(Map)
+2025-10-04 18:41:00 - Read "application/json;charset=UTF-8" to [{body={"user": "detached_test", "amount": 999}}]
+2025-10-04 18:41:00 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:41:00 - Writing [{jws_header=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNmJjNTIzNTZhYzI0ZTcwNTA2ZTI5YTFlZDdmYjliYTkiLCJ0cyI6MTc1 (truncated)...]
+2025-10-04 18:41:00 - Completed 200 OK
+2025-10-04 18:41:09 - POST "/api/jws/verify-jws", parameters={}
+2025-10-04 18:41:09 - Mapped to com.fintoc.logger.controller.JwsController#verifyJws(Map)
+2025-10-04 18:41:09 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNmJjNTIzNTZhYzI0ZTcwNTA2ZTI5YTFlZDdmYjliYTkiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:41:09 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:41:09 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNmJjNTIzNTZhYzI0ZTcwNTA2ZTI5YTFlZDdmYjliYTkiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:41:09 - Completed 200 OK
+2025-10-04 18:41:16 - POST "/api/jws/verify-jws", parameters={}
+2025-10-04 18:41:16 - Mapped to com.fintoc.logger.controller.JwsController#verifyJws(Map)
+2025-10-04 18:41:16 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNmJjNTIzNTZhYzI0ZTcwNTA2ZTI5YTFlZDdmYjliYTkiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:41:16 - Error verifying JWS signature: Last unit does not have enough valid bits
+java.lang.IllegalArgumentException: Last unit does not have enough valid bits
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:872)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593)
+	at com.fintoc.logger.service.JwsSignatureService.verifyJwsSignature(JwsSignatureService.java:233)
+	at com.fintoc.logger.controller.JwsController.verifyJws(JwsController.java:266)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-10-04 18:41:16 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:41:16 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNmJjNTIzNTZhYzI0ZTcwNTA2ZTI5YTFlZDdmYjliYTkiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:41:16 - Completed 200 OK
+2025-10-04 18:53:20 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:53:20 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:53:20 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:53:20 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:53:20 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:53:20 - Completed 200 OK
+2025-10-04 18:53:22 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:53:22 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:53:22 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 18:53:22 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:53:22 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:53:22 - Completed 200 OK
+2025-10-04 18:57:06 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:57:06 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:57:06 - Read "application/json;charset=UTF-8" to [{body={"test": "jwt.io comparison"}}]
+2025-10-04 18:57:06 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:57:06 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:57:06 - Completed 200 OK
+2025-10-04 18:57:16 - POST "/api/jws/verify-jws", parameters={}
+2025-10-04 18:57:16 - Mapped to com.fintoc.logger.controller.JwsController#verifyJws(Map)
+2025-10-04 18:57:16 - Read "application/json;charset=UTF-8" to [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNTZhNDcyOTBmNjBjMDc1M2Y2ZWI2OTRjZDkyMTVhODUiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:57:16 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:57:16 - Writing [{jws_token=eyJhbGciOiJSUzI1NiIsIm5vbmNlIjoiNTZhNDcyOTBmNjBjMDc1M2Y2ZWI2OTRjZDkyMTVhODUiLCJ0cyI6MTc1O (truncated)...]
+2025-10-04 18:57:16 - Completed 200 OK
+2025-10-04 18:58:48 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 18:58:48 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 18:58:48 - Read "application/json;charset=UTF-8" to [{body={"purpose": "online_testing", "tool": "jose.tools"}}]
+2025-10-04 18:58:48 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 18:58:48 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 18:58:48 - Completed 200 OK
+2025-10-04 19:00:23 - POST "/api/jws/create-jws-complete", parameters={}
+2025-10-04 19:00:23 - Mapped to com.fintoc.logger.controller.JwsController#createCompleteJws(Map)
+2025-10-04 19:00:23 - Read "application/json;charset=UTF-8" to [{body={"user": "testuser", "amount": 750, "action": "transfer"}}]
+2025-10-04 19:00:23 - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2025-10-04 19:00:23 - Writing [{note=This token contains the payload and can be fully decoded, complete_jws=eyJhbGciOiJSUzI1NiIsIm5 (truncated)...]
+2025-10-04 19:00:23 - Completed 200 OK
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41:36 min
+[INFO] Finished at: 2025-10-04T19:19:40-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.18:run (default-cli) on project fintoc-api-logger: Application finished with exit code: 137 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
